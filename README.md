@@ -1,4 +1,4 @@
-# Diplom_1
+# Diplom_2
 ## QA Java. Graduation project. Pt. 2 - API tests
 
 ### Необходимое окружение
