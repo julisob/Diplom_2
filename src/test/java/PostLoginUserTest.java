@@ -1,7 +1,12 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import user.Random;
+import user.User;
+import user.UserCredentials;
+import user.UserHelper;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
@@ -9,9 +14,9 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class PostLoginUserTest {
     Random random;
-    User user;
-    UserCredentials userCredentials;
-    String accessToken;
+    private User user;
+    private UserCredentials userCredentials;
+    private String accessToken;
 
     @Before
     public void setUp() {
@@ -22,6 +27,7 @@ public class PostLoginUserTest {
     }
 
     @Test
+    @DisplayName("Авторизация существующего пользователя")
     public void loginUserTest() {
         userCredentials = new UserCredentials(user);
         Response response = UserHelper.postLoginUser(userCredentials);
@@ -29,6 +35,7 @@ public class PostLoginUserTest {
     }
 
     @Test
+    @DisplayName("Авторизация пользователя с неверным паролем")
     public void loginUserWrongCredentialsPasswordTest() {
         String wrongPassword = user.getPassword() + "1515";
         user.setPassword(wrongPassword);
@@ -38,6 +45,7 @@ public class PostLoginUserTest {
     }
 
     @Test
+    @DisplayName("Авторизация пользователя с неверным email")
     public void loginUserWrongCredentialsEmailTest() {
         String wrongEmail = "qw2b9" + user.getEmail();
         user.setEmail(wrongEmail);

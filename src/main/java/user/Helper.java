@@ -1,3 +1,5 @@
+package user;
+
 public class Helper {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";
     public static final String POST_CREATE_USER = "/api/auth/register";

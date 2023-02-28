@@ -1,3 +1,5 @@
+package user;
+
 public class UserNewData {
 
     private String email;
